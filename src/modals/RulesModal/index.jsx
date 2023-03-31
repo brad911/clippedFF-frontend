@@ -124,156 +124,27 @@ const RulesModal = ({ ...rest }) => {
     <Modal
       id="rules-modal"
       // className={clsx(token && ="logged-in")}
-      title="Game Rules"
+      title="How to Play the Game"
       {...rest}
     >
       <OtpModal {...otpUtils} />
 
       <div className="text-center">
-        <form>
-          {/* {!isMember && (
-            <div className="form-control">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={formState.name}
-                onChange={inputChangeHandler}
-              />
-            </div>
-          )} */}
-          {/* <div className="form-control">
-            <label htmlFor="email">Rules</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={inputChangeHandler}
-            />
-          </div> */}
-          <div className="form-controll">
-            {/* <h1>GAME RULE</h1> */}
-            <div className="content">
-              <p>
-                <strong>Fractured Frazez </strong> is a free online word game.
-              </p>
-              <p>
-                Registered players can play 3 games a day to earn gold, silver, or bronze
-                medals.   They will also have their scores posted on the leaderboard.  Guest
-                players can play just 1 game a day and will not earn any medals.
-              </p>
-              <p>
-                To get a GOLD MEDAL in <strong>Fractured Frazez</strong> you must be the BEST,
-                which means no hint and no clue.
-              </p>
-
-              <p>
-                A <strong>hint</strong> is a drop-down-letter and a <strong>clue </strong> is a
-                category. The game starts WITHOUT the category showing. It only appears if the
-                player chooses to get a clue. Players have the option of asking for either a
-                hint or a clue but you forfeit the gold medal.
-              </p>
-              <p>
-                Using the keyboard, players click on letters until the answer is revealed. If a
-                letter appears more than once, it must be entered individually.
-              </p>
-
-              <p>
-                You are always trying for the GOLD medal at the start of a game. {" "}
-                <strong>
-                  But be very careful as you will not get a second chance at this because as
-                  soon as you enter a wrong letter the game is over and the answer will be
-                  revealed.
-                </strong>
-                   Remember, no hint or clue when playing for GOLD.
-              </p>
-
-              <table>
-                <thead></thead>
-
-                <tbody>
-                  <tr>
-                    <th className="table-left">Actions</th>
-                    <th className="table-right">Reward</th>
-                  </tr>
-                  <tr>
-                    <td>Solve the answer with no clue or hint </td>
-                    <td>Gold Medal</td>
-                  </tr>
-                  <tr>
-                    <td> Solve the answer with a clue </td>
-                    <td>Silver Medal</td>
-                  </tr>
-                  <tr>
-                    <td>Solve the answer with a clue and a hint </td>
-
-                    <td>Bronze Medal</td>
-                  </tr>
-                  <tr>
-                    <td>Solve the answer with a clue and two hints </td>
-                    <td>You still get a Bronze Medal!</td>
-                  </tr>
-                </tbody>
-                <tfoot />
-              </table>
-            </div>
+        <div className="form-controll">
+          <div className="content">
+            <p>
+              <strong>FracturedFrazez</strong> is a free online word game. We invite players to
+              our website to play 3 games every day. There will be a phrase with a category
+              next to it. This will be the key to solving the answer. Using the keyboard on
+              their mobile or computer, players click on letters to come up with the correct
+              answer. If you need it, the computer will give you three hints for each game in
+              the form of a dropdown letter. If the same letter appears multiple times, it must
+              be clicked on individually. You may also guess but each incorrect guess counts as
+              a hint. Solve the fracturedfraz without any help from the computer, and you have
+              earned bragging rights.
+            </p>
           </div>
-          {/* <div className="form-control">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formState.password}
-              onChange={inputChangeHandler}
-            />
-          </div> */}
-          {/*   
-          <button className="submit btn" disabled={isLoading}>
-            Submit
-          </button> */}
-          {/* 
-          <div className="switch mb-3">
-            {isMember ? (
-              <>
-                Don't have an account?{" "}
-                <button className="btn" onClick={toggleForm}>
-                  Signup
-                </button>
-              </>
-            ) : (
-              <>
-                Already a member?{" "}
-                <button className="btn" onClick={toggleForm}>
-                  Login
-                </button>
-              </>
-            )}
-          </div> */}
-        </form>
-
-        {/* <div className="or">OR</div> */}
-        {/* 
-        <form action="">
-          <GoogleLogin
-            buttonText={isLoading ? "Loading..." : "Login with google"}
-            onSuccess={googleLoginSuccess}
-            onFailure={googleLoginFailure}
-          /> */}
-        {/* <div className="fb-wrapper">
-            <FacebookLogin
-              appId="1127823614500397"
-              autoLoad={false}
-              fields="name,email"
-              callback={facebookSuccess}
-              onFailure={facebookFailure}
-              textButton={isLoading ? "Loading..." : "Login with Facebook"}
-              icon="fa-facebook"
-            />
-          </div> */}
-        {/* </form> */}
+        </div>
       </div>
     </Modal>
   );

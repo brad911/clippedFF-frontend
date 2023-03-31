@@ -101,7 +101,7 @@ const Navbar = ({
             </div> */}
             <button className="btn" onClick={rulesUtils.toggleShow}>
               {" "}
-              RULES
+              Game Play
             </button>
             <button className="btn" onClick={contactUtils.toggleShow}>
               {" "}
