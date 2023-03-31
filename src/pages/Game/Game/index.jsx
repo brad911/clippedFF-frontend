@@ -218,7 +218,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   const takeHintHandler = () => {
     let letter;
 
-    if (hintsLeft === 0) {
+    if (hintsLeft === 1) {
       toast.info("you ran out of hints", { toastId: "games_toast" });
       return;
     }

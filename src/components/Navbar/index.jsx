@@ -144,7 +144,7 @@ const Navbar = ({
                 }}
                 className="right"
               >
-                {hintsLeft} Left
+                {hintsLeft - 1} Left
               </div>
             </div>
           )}
