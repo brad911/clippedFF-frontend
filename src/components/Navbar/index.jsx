@@ -131,7 +131,7 @@ const Navbar = ({
                 // style={{ color: isCategoryRevealed ? "#6DCEFF" : "#696969" , backgroundColor : isCategoryRevealed ? "white" : "#ABAAAA" , curosor : isCategoryRevealed ? "pointer" : "unset"}}
                 className="left"
                 // style={{ color: isCategoryRevealed ? "#6DCEFF" : "#ffff" }}
-                style={{color:"#ffff",  backgroundColor:"#6DCEFF"}}
+                style={{ color: "#ffff", backgroundColor: "#6DCEFF" }}
               >
                 HINTS
               </div>
@@ -141,12 +141,12 @@ const Navbar = ({
                   // color: isCategoryRevealed ? "white" : "	#696969",
                   color: "white",
                   // backgroundColor: isCategoryRevealed ? "#6DCEFF" : " #ABAAAA",
-                  backgroundColor:"#6DCEFF",
+                  backgroundColor: "#6DCEFF",
                   curosor: isCategoryRevealed ? "pointer" : "unset",
                 }}
                 className="right"
               >
-                {hintsLeft - 1} Left
+                {hintsLeft} Left
               </div>
             </div>
           )}

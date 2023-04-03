@@ -218,10 +218,10 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   const takeHintHandler = () => {
     let letter;
 
-    if (hintsLeft === 1) {
-      toast.info("you ran out of hints", { toastId: "games_toast" });
-      return;
-    }
+    // if (hintsLeft === 1) {
+    //   toast.info("you ran out of hints", { toastId: "games_toast" });
+    //   return;
+    // }
 
     setGuessesLeft((prevState) => prevState - 1);
     if (hintsLeft === 2) {
@@ -531,12 +531,26 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
                 );
               })}
             </div>
-
             <div className="lives-wrap">
               <div className="lives-box">
-                {/* <div className={clsx(guessesLeft < 3 && "show")}>X</div>
-            <div className={clsx(guessesLeft < 2 && "show")}>X</div> */}
-                <div className={clsx(guessesLeft < 1 && "show")}>X</div>
+                <div
+                  style={{ display: hintsLeft < 3 ? "block" : "none" }}
+                  className={clsx(hintsLeft < 3 && "show")}
+                >
+                  X
+                </div>
+                <div
+                  style={{ display: hintsLeft < 2 ? "block" : "none" }}
+                  className={clsx(hintsLeft < 2 && "show")}
+                >
+                  X
+                </div>
+                <div
+                  style={{ display: hintsLeft < 1 ? "block" : "none" }}
+                  className={clsx(hintsLeft < 1 && "show")}
+                >
+                  X
+                </div>
               </div>
             </div>
 

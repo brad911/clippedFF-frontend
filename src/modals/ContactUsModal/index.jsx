@@ -77,7 +77,7 @@ const ContactUsModal = ({ ...rest }) => {
       <div className="text-center">
         <form>
           <div className="form-controll">
-            <h1 style={{ fontWeight: "400" }}>
+            {/* <h1 style={{ fontWeight: "400" }}>
               HAVE ANY QUESTIONS OR SUGGESTIONS? FEEL FREE TO REACH OUT
             </h1>
             <div className="content">
@@ -87,6 +87,10 @@ const ContactUsModal = ({ ...rest }) => {
             </div>
             <div>
               <strong className="mail-strong">Email: fracturedfrazez@gmail.com</strong>
+            </div> */}
+            <div>
+              Please send any comments or suggestions to{" "}
+              <strong> fracturedfrazez@gmail.com</strong>
             </div>
             <div className="content">
               <div className="left">

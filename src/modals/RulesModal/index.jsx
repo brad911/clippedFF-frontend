@@ -147,6 +147,9 @@ const RulesModal = ({ ...rest }) => {
               <br />
               <br /> Solve the fracturedfraz without any help from the computer, and you have
               earned bragging rights.
+              <br />
+              <br />
+              After you have used your 3 hints, the answer will be revealed.
             </p>
           </div>
         </div>

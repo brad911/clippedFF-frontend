@@ -32,7 +32,7 @@ const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
         <div className="text-center">
           {/* {hints > -1 ? ( */}
           <>
-            <img
+            {/* <img
               className="vector"
               src={`/assets/imgs/medal-${
                 hints === 3
@@ -46,25 +46,12 @@ const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
                   : "nothing"
               }.jpg`}
               alt="medal"
-            />
+            /> */}
 
             {hints === 0 ? (
-              <h2 className="fw-500 my-2">"Congratulations. Next time try for a medal"</h2>
+              <h2 className="fw-500 my-2">"Congratulations."</h2>
             ) : (
-              <h2 className="fw-500 my-2">
-                Congratulations! You won
-                <strong>
-                  {hints === 3
-                    ? " a gold medal"
-                    : hints === 2
-                    ? " a silver medal"
-                    : hints === 1
-                    ? " a bronze medal"
-                    : hints === 0
-                    ? " nothing"
-                    : null}
-                </strong>{" "}
-              </h2>
+              <h2 className="fw-500 my-2">Congratulations! You won.</h2>
             )}
           </>
           {/* ) : (
