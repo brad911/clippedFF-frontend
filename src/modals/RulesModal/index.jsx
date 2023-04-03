@@ -131,16 +131,21 @@ const RulesModal = ({ ...rest }) => {
 
       <div className="text-center">
         <div className="form-controll">
-          <div className="content">
+          <div className="content" style={{ textAlign: "left" }}>
             <p>
               <strong>FracturedFrazez</strong> is a free online word game. We invite players to
-              our website to play 3 games every day. There will be a phrase with a category
-              next to it. This will be the key to solving the answer. Using the keyboard on
-              their mobile or computer, players click on letters to come up with the correct
-              answer. If you need it, the computer will give you three hints for each game in
+              our website to play 3 games every day. <br />
+              <br /> There will be a phrase with a category next to it. This will be the key to
+              solving the answer. Using the keyboard on their mobile or computer, players click
+              on letters to come up with the correct answer.
+              <br />
+              <br /> If you need it, the computer will give you three hints for each game in
               the form of a dropdown letter. If the same letter appears multiple times, it must
-              be clicked on individually. You may also guess but each incorrect guess counts as
-              a hint. Solve the fracturedfraz without any help from the computer, and you have
+              be clicked on individually.
+              <br />
+              <br /> You may also guess but each incorrect guess counts as a hint.
+              <br />
+              <br /> Solve the fracturedfraz without any help from the computer, and you have
               earned bragging rights.
             </p>
           </div>
