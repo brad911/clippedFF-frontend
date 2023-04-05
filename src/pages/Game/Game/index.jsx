@@ -449,11 +449,11 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
         </div>
         <div style={{ display: showVideo && window.innerWidth > 600 ? "none" : "block" }}>
           <Section id="game">
-            <RevealCategoryModal
+            {/* <RevealCategoryModal
               {...revealModalUtils}
               onCancel={() => revealModalUtils.toggleShow("close")}
               onConfirm={revealCategoryHandler}
-            />
+            /> */}
 
             <Navbar
               setRender={setRender}
@@ -553,7 +553,8 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
                 </div>
               </div>
             </div>
-
+            <br />
+            <br />
             <div className={clsx({ disabled: !gameRunning }, "keyboard-wrap")}>
               <div className="keyboard">
                 {!gameRunning && (

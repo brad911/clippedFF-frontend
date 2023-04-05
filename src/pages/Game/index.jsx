@@ -22,6 +22,7 @@ function GameWrapper() {
   );
 
   const gameEndHandler = useCallback((intent, hints, guesses) => {
+    console.log("i ran");
     if (!token) {
       const lastPlayedDate = localStorage.getItem("FF_LAST_PLAYED_DATE");
       const gamesPlayed = localStorage.getItem("FF_GAMES_PLAYED");
@@ -50,7 +51,6 @@ function GameWrapper() {
       localStorage.setItem("FF_GAMES_PLAYED", newGamesPlayed);
       localStorage.setItem("FF_LAST_PLAYED_DATE", new Date());
     }
-    const d = new Date();
     // axios
     //   .post("/games", {
     //     hintsUsed: 3 - hints,

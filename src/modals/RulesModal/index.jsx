@@ -145,11 +145,11 @@ const RulesModal = ({ ...rest }) => {
               <br />
               <br /> You may also guess but each incorrect guess counts as a hint.
               <br />
-              <br /> Solve the fracturedfraz without any help from the computer, and you have
-              earned bragging rights.
-              <br />
               <br />
               After you have used your 3 hints, the answer will be revealed.
+              <br />
+              <br /> Solve the fracturedfraze without any help from the computer, and you have
+              earned bragging rights.
             </p>
           </div>
         </div>

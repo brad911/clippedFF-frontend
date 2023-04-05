@@ -75,69 +75,12 @@ const ContactUsModal = ({ ...rest }) => {
       }}
     >
       <div className="text-center">
-        <form>
-          <div className="form-controll">
-            {/* <h1 style={{ fontWeight: "400" }}>
-              HAVE ANY QUESTIONS OR SUGGESTIONS? FEEL FREE TO REACH OUT
-            </h1>
-            <div className="content">
-              We're here to help! If you have any questions or concerns, please don't hesitate
-              to get in touch with us. You can reach us by email or by filling out the contact
-              form below. We strive to respond to all inquiries as quickly as possible.
-            </div>
-            <div>
-              <strong className="mail-strong">Email: fracturedfrazez@gmail.com</strong>
-            </div> */}
-            <div>
-              Please send any comments or suggestions to{" "}
-              <strong> fracturedfrazez@gmail.com</strong>
-            </div>
-            <div className="content">
-              <div className="left">
-                <img src={contactUsImage} />
-              </div>
-              <div className="right">
-                <div className="inputfields">
-                  <input
-                    placeholder="Full Name"
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                  ></input>
-                  <input
-                    placeholder="Email Address"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                  ></input>
-                </div>
-                <div className="messagebox">
-                  <textarea
-                    placeholder="Message or Suggestion"
-                    rows="15"
-                    onChange={(e) => {
-                      setMessage(e.target.value);
-                    }}
-                  ></textarea>
-                  <button
-                    style={{
-                      width: "100%",
-                      background: "#6DCEFF",
-                      borderRadius: "15px",
-                      color: "white",
-                      fontWeight: "bold",
-                      padding: "10px",
-                      border: "1px solid #6DCEFF",
-                    }}
-                    onClick={formSubmitHandler}
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </div>
+        <div className="form-controll">
+          <div>
+            Please send any comments or suggestions to{" "}
+            <strong> fracturedfrazez@gmail.com</strong>
           </div>
-        </form>
+        </div>
       </div>
     </Modal>
   );
