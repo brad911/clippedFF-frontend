@@ -92,8 +92,9 @@ button {
   }
 
   @media screen and (max-width: 575px) {
-    padding-left: 12px;
-    padding-right: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .page-container {

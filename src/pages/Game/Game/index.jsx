@@ -554,7 +554,6 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
               </div>
             </div>
             <br />
-            <br />
             <div className={clsx({ disabled: !gameRunning }, "keyboard-wrap")}>
               <div className="keyboard">
                 {!gameRunning && (

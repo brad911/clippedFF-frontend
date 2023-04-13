@@ -115,6 +115,9 @@ body {
 
       @media screen and (max-width: 575px) {
         margin-bottom: 10px;
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
       }
 
       &.in-visible {
@@ -190,11 +193,9 @@ body {
   .keyboard-wrap {
     display: flex;
     justify-content: center;
-    margin: 1rem auto;
 
     @media screen and (max-width: 575px) {
-      margin-left: -20px;
-      width: 100vw;
+      width: 100%;
     }
 
     &.disabled {
@@ -335,7 +336,6 @@ body {
         pointer-events: none;
       }
     }
-    
 
     .switch {
       font-size: 0.75rem;
@@ -346,7 +346,6 @@ body {
     }
   }
 }
-
 
 #forgetpassword-modal {
   max-width: 600px;
@@ -391,7 +390,6 @@ body {
         pointer-events: none;
       }
     }
-    
 
     .switch {
       font-size: 0.75rem;
@@ -403,7 +401,7 @@ body {
   }
 }
 #rules-modal {
-  max-width:70vw;
+  max-width: 70vw;
 
   &.logged-in {
     display: none;
@@ -445,18 +443,18 @@ body {
         pointer-events: none;
       }
     }
-    .form-controll{
-      h1{
-        color: #27628A;
+    .form-controll {
+      h1 {
+        color: #27628a;
       }
     }
-    .content{
+    .content {
       padding-top: 20px;
       display: flex;
       flex-direction: column;
       text-align: left;
       gap: 20px;
-      strong{
+      strong {
         color: black;
       }
       table {
@@ -464,32 +462,32 @@ body {
         border-collapse: collapse;
         width: 100%;
         box-shadow: 0px 5px 9px 1px rgb(128 128 128 / 38%);
-        border-radius: 15px ;
+        border-radius: 15px;
       }
-      .table-left{
+      .table-left {
         border-radius: 15px 0px 0px 0px;
       }
-      .table-right{
-        border-radius: 0px 15px 0px 0px ;
+      .table-right {
+        border-radius: 0px 15px 0px 0px;
       }
       tr:nth-child(even) {
         background-color: #dddddd;
       }
-      
-      td{
+
+      td {
         // border: 1px solid black;
         text-align: left;
         padding: 8px;
         text-align: center;
       }
-      th{
-        background-color: #27628A;
+      th {
+        background-color: #27628a;
         color: white;
         text-align: center;
         padding: 10px;
         // border: 1px solid black;
       }
-      
+
       // tr:nth-child(1) {
       //   background-color: #dddddd;
       // }
@@ -506,7 +504,7 @@ body {
 }
 
 #contact-modal {
-  max-width:90vw;
+  max-width: 90vw;
 
   &.logged-in {
     display: none;
@@ -548,12 +546,12 @@ body {
         pointer-events: none;
       }
     }
-    .form-controll{
-      h1{
-        color: #27628A;
+    .form-controll {
+      h1 {
+        color: #27628a;
       }
     }
-    .content{
+    .content {
       display: flex;
       padding-top: 20px;
       display: flex;
@@ -561,45 +559,42 @@ body {
       text-align: center;
       gap: 20px;
       flex-direction: row;
-      .left{
+      .left {
         display: flex;
         width: 40%;
         // background-image: url("../assets/contactUs.jpeg");
         // background-position: center center;
         // background-size: cover  ;
-        img{width: 100%;
-          border-radius: 25px 0px  0px 25px;
+        img {
+          width: 100%;
+          border-radius: 25px 0px 0px 25px;
         }
-
       }
-      .right{
+      .right {
         display: flex;
         flex-direction: column;
         gap: 20px;
         width: 60%;
-        .inputfields{
+        .inputfields {
           display: flex;
           gap: 15px;
-          input{
+          input {
             width: 50%;
             padding: 15px;
             border-radius: 10px;
-            border: 1px solid #9A9A9A;
+            border: 1px solid #9a9a9a;
           }
         }
-        .messagebox{
-          textarea{
+        .messagebox {
+          textarea {
             padding: 10px;
             border-radius: 10px;
-            border: 1px solid #9A9A9A;
+            border: 1px solid #9a9a9a;
             width: 100%;
-
           }
-          
         }
-        
       }
-      strong{
+      strong {
         color: black;
       }
       table {
@@ -607,32 +602,32 @@ body {
         border-collapse: collapse;
         width: 100%;
         box-shadow: 0px 5px 9px 1px rgb(128 128 128 / 38%);
-        border-radius: 15px ;
+        border-radius: 15px;
       }
-      .table-left{
+      .table-left {
         border-radius: 15px 0px 0px 0px;
       }
-      .table-right{
-        border-radius: 0px 15px 0px 0px ;
+      .table-right {
+        border-radius: 0px 15px 0px 0px;
       }
       tr:nth-child(even) {
         background-color: #dddddd;
       }
-      
-      td{
+
+      td {
         // border: 1px solid black;
         text-align: left;
         padding: 8px;
         text-align: center;
       }
-      th{
-        background-color: #27628A;
+      th {
+        background-color: #27628a;
         color: white;
         text-align: center;
         padding: 10px;
         // border: 1px solid black;
       }
-      
+
       // tr:nth-child(1) {
       //   background-color: #dddddd;
       // }
@@ -649,7 +644,7 @@ body {
 }
 
 #logout-modal {
-  max-width:40vw;
+  max-width: 40vw;
 
   &.logged-in {
     display: none;
@@ -691,18 +686,18 @@ body {
         pointer-events: none;
       }
     }
-    .form-controll{
-      h1{
-        color: #27628A;
+    .form-controll {
+      h1 {
+        color: #27628a;
       }
     }
-    .content{
+    .content {
       padding-top: 20px;
       display: flex;
       flex-direction: column;
       text-align: center;
       gap: 20px;
-      strong{
+      strong {
         color: black;
       }
       table {
@@ -710,32 +705,32 @@ body {
         border-collapse: collapse;
         width: 100%;
         box-shadow: 0px 5px 9px 1px rgb(128 128 128 / 38%);
-        border-radius: 15px ;
+        border-radius: 15px;
       }
-      .table-left{
+      .table-left {
         border-radius: 15px 0px 0px 0px;
       }
-      .table-right{
-        border-radius: 0px 15px 0px 0px ;
+      .table-right {
+        border-radius: 0px 15px 0px 0px;
       }
       tr:nth-child(even) {
         background-color: #dddddd;
       }
-      
-      td{
+
+      td {
         // border: 1px solid black;
         text-align: left;
         padding: 8px;
         text-align: center;
       }
-      th{
-        background-color: #27628A;
+      th {
+        background-color: #27628a;
         color: white;
         text-align: center;
         padding: 10px;
         // border: 1px solid black;
       }
-      
+
       // tr:nth-child(1) {
       //   background-color: #dddddd;
       // }
@@ -793,7 +788,6 @@ body {
         pointer-events: none;
       }
     }
-    
 
     .switch {
       font-size: 0.75rem;
@@ -848,7 +842,6 @@ body {
         pointer-events: none;
       }
     }
-    
 
     .switch {
       font-size: 0.75rem;
@@ -859,7 +852,6 @@ body {
     }
   }
 }
-
 
 #leaderboard {
   table {
@@ -1055,160 +1047,157 @@ body {
   }
 }
 @media screen and (max-width: 780px) and (min-width: 200px) {
-  .custom-modal{
+  .custom-modal {
     padding: 10px 10px !important;
   }
-  .modal-head{
+  .modal-head {
     width: auto !important;
   }
   #root div#rules-modal .custom-modal {
     padding: 10px 10px !important;
-}
-#rules-modal{
-  max-width: none;
-}
-
-#contact-modal {
-  max-width:90vw;
-
-  &.logged-in {
-    display: none;
+  }
+  #rules-modal {
+    max-width: none;
   }
 
-  .or {
-    margin-bottom: 1rem;
-    display: block;
-  }
+  #contact-modal {
+    max-width: 90vw;
 
-  form {
-    // max-width: 215px;
-    // max-width: 180px;
-    min-width: 280px;
-    width: fit-content;
-    margin: auto;
-
-    button.btn {
-      border: none;
-      background-color: transparent;
+    &.logged-in {
+      display: none;
     }
 
-    button.submit {
+    .or {
+      margin-bottom: 1rem;
       display: block;
-      font-size: 1rem;
-      color: #fff;
-      background-color: $color1;
-      border-radius: 4px;
-      padding: 0.5rem 1.75rem;
-      margin: 1.5rem auto;
-      transition: 0.4s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-
-      &:disabled {
-        opacity: 0.5;
-        pointer-events: none;
-      }
     }
-    .form-controll{
-      h1{
-        color: #27628A;
+
+    form {
+      // max-width: 215px;
+      // max-width: 180px;
+      min-width: 280px;
+      width: fit-content;
+      margin: auto;
+
+      button.btn {
+        border: none;
+        background-color: transparent;
       }
-    }
-    .content{
-      display: flex;
-      padding-top: 20px;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      gap: 20px;
-      flex-direction: column;
-      .left{
-        display: flex;
-        flex-direction:column ;
-        width: 100%;
-        // background-image: url("../assets/contactUs.jpeg");
-        // background-position: center center;
-        // background-size: cover  ;
-        img{width: 100%;
-          border-radius: 25px 0px  0px 25px;
+
+      button.submit {
+        display: block;
+        font-size: 1rem;
+        color: #fff;
+        background-color: $color1;
+        border-radius: 4px;
+        padding: 0.5rem 1.75rem;
+        margin: 1.5rem auto;
+        transition: 0.4s ease;
+
+        &:hover {
+          transform: scale(1.05);
         }
 
+        &:disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
       }
-      .right{
+      .form-controll {
+        h1 {
+          color: #27628a;
+        }
+      }
+      .content {
+        display: flex;
+        padding-top: 20px;
         display: flex;
         flex-direction: column;
+        text-align: center;
         gap: 20px;
-        width: 100%;
-        .inputfields{
+        flex-direction: column;
+        .left {
           display: flex;
-          gap: 15px;
-          input{
-            width: 50%;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #9A9A9A;
-          }
-        }
-        .messagebox{
-          textarea{
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #9A9A9A;
+          flex-direction: column;
+          width: 100%;
+          // background-image: url("../assets/contactUs.jpeg");
+          // background-position: center center;
+          // background-size: cover  ;
+          img {
             width: 100%;
-
+            border-radius: 25px 0px 0px 25px;
           }
-          
         }
-        
-      }
-      strong{
-        color: black;
-      }
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        box-shadow: 0px 5px 9px 1px rgb(128 128 128 / 38%);
-        border-radius: 15px ;
-      }
-      .table-left{
-        border-radius: 15px 0px 0px 0px;
-      }
-      .table-right{
-        border-radius: 0px 15px 0px 0px ;
-      }
-      tr:nth-child(even) {
-        background-color: #dddddd;
-      }
-      
-      td{
-        // border: 1px solid black;
-        text-align: left;
-        padding: 8px;
-        text-align: center;
-      }
-      th{
-        background-color: #27628A;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        // border: 1px solid black;
-      }
-      
-      // tr:nth-child(1) {
-      //   background-color: #dddddd;
-      // }
-    }
+        .right {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+          .inputfields {
+            display: flex;
+            gap: 15px;
+            input {
+              width: 50%;
+              padding: 15px;
+              border-radius: 10px;
+              border: 1px solid #9a9a9a;
+            }
+          }
+          .messagebox {
+            textarea {
+              padding: 10px;
+              border-radius: 10px;
+              border: 1px solid #9a9a9a;
+              width: 100%;
+            }
+          }
+        }
+        strong {
+          color: black;
+        }
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          box-shadow: 0px 5px 9px 1px rgb(128 128 128 / 38%);
+          border-radius: 15px;
+        }
+        .table-left {
+          border-radius: 15px 0px 0px 0px;
+        }
+        .table-right {
+          border-radius: 0px 15px 0px 0px;
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
 
-    .switch {
-      font-size: 0.75rem;
-    }
+        td {
+          // border: 1px solid black;
+          text-align: left;
+          padding: 8px;
+          text-align: center;
+        }
+        th {
+          background-color: #27628a;
+          color: white;
+          text-align: center;
+          padding: 10px;
+          // border: 1px solid black;
+        }
 
-    &:nth-child(3) {
-      min-width: fit-content;
+        // tr:nth-child(1) {
+        //   background-color: #dddddd;
+        // }
+      }
+
+      .switch {
+        font-size: 0.75rem;
+      }
+
+      &:nth-child(3) {
+        min-width: fit-content;
+      }
     }
   }
-}
 }
