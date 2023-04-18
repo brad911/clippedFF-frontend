@@ -1,0 +1,9 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Rewrite base URL to index.html
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
