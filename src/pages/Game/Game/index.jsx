@@ -38,11 +38,12 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   const [lettersToGuess, setLettersToGuess] = useState([]);
   const [hintsLeft, setHintsLeft] = useState(3);
   const [guessedPhraseArr, setguessedPhraseArr] = useState([]);
-  const [guessedPhraseArrWithoutGaps, setGuessedPhraseArrWithoutGaps] = useState([]);
+  const [guessedPhraseArrWithoutGaps, setGuessedPhraseArrWithoutGaps] =
+    useState([]);
   const [guessedPraseArrChunked, setGuessedPraseArrChunked] = useState([]);
   const [gameRunning, setGameRunning] = useState(false);
   const [frazeBeingSet, setFrazeBeingSet] = useState(false);
-  const [isCategoryRevealed, setIsCategoryRevealed] = useState(false);
+  const [isCategoryRevealed, setIsCategoryRevealed] = useState(true);
   const [checker, setChecker] = useState([]);
   const revealModalUtils = useModal();
   const [render, setRender] = useState(false);
@@ -55,10 +56,176 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   // CHECK IF LIMIT OF GAMES HAS REACHED
 
   const hasPlayingLimit = useCallback(() => {
+    console.log("I RUNNNNN");
     let gamesPlayed = localStorage.getItem("FF_GAMES_PLAYED");
     let lastPlayedDate = localStorage.getItem("FF_LAST_PLAYED_DATE");
+    
+    // console.log(gamesPlayed, "game played")
+    const now = new Date();
+    // const hours = now.getHours();
+    // const minutes = now.getMinutes();
+    const lastPlayedTimestamp = new Date(lastPlayedDate);
+    // console.log(lastPlayedTimestamp.getTime(), "lastplayedddd")
+    const nextDay = lastPlayedTimestamp.getTime() + 24 * 60 * 60 * 1000;
+    console.log(
+      now.getDate() > lastPlayedTimestamp.getDate() && Math.abs(now.getTime()- lastPlayedTimestamp.getTime()) >= 75350502 ,
+      "main condition"
+    );
+    console.log(Math.abs(now.getTime()-lastPlayedTimestamp.getTime()), "math difference");
+
+    if (!isNaN(lastPlayedTimestamp)) {
+      console.log("pehla if");
+
+      if (
+        now.getDate() > lastPlayedTimestamp.getDate() && Math.abs(now.getTime()- lastPlayedTimestamp.getTime()) >= 75350502
+      ) {
+        gamesPlayed = 0;
+        localStorage.setItem("FF_GAMES_PLAYED", 0);
+        return true;
+      }
+
+      // if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() > 7) {
+      //   if (lastPlayedTimestamp.getDate() <= now.getDate()) {
+      //     gamesPlayed = 0;
+      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
+      //     return true;
+      //   }
+      //   if (gamesPlayed <= 2) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // }
+
+      // if (lastPlayedTimestamp.getHours() > 7 && now.getHours >= 7) {
+      //   if (lastPlayedTimestamp.getDate() < now.getDate()) {
+      //     gamesPlayed = 0;
+      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
+      //     return true;
+      //   }
+      //   if (gamesPlayed <= 2) {
+      //     return true;
+      //   }
+      // }
+      // if (lastPlayedTimestamp.getHours() > 7 && now.getHours() < 7) {
+      //   if (lastPlayedTimestamp.getDate() < now.getDate()) {
+      //     gamesPlayed = 0;
+      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
+      //     return true;
+      //   }
+      //   if (gamesPlayed <= 2) {
+      //     return true;
+      //   }
+      // }
+
+      // if (
+      //   now.getHours() >= 8 &&
+      //   now.getTime() > lastPlayedTimestamp.getTime() + nextDay
+      // ) {
+      //   console.log("doosra if");
+      //   gamesPlayed = 0;
+      //   localStorage.setItem("FF_GAMES_PLAYED", 0);
+
+      //   return true;
+      // }
+      //   if ( now.getTime() < lastPlayedTimestamp.getTime()+ nextDay ) {
+      //     if(gamesPlayed <=2){
+      //     console.log("doosra if")
+      //    return true
+      //   }
+      //   else{
+      //     console.log(false, "false araha hai yahan");
+      //     toggleShowSeeYouSoonModal("open");
+      //     return false;
+
+      //   }
+      // }
+
+      // if(now.getTime() < lastPlayedTimestamp.getTime()+ nextDay && gamesPlayed >=2){
+      //   console.log(false, "false araha hai yahan");
+      //   toggleShowSeeYouSoonModal("open");
+      //   return false;
+
+      // }
+
+      // if (lastPlayedTimestamp.getDate() <= now.getDate()) {
+      //   if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() > 7) {
+      //     gamesPlayed = 0;
+      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
+      //     return true;
+      //   }
+      //   if (
+      //     lastPlayedTimestamp.getHours() >= 7 &&
+      //     lastPlayedTimestamp.getDate() < now.getDate()
+      //   ) {
+      //     gamesPlayed = 0;
+      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
+      //     return true;
+      //   }
+      // } else {
+      //   console.log(false, "false araha hai yahan");
+      //   toggleShowSeeYouSoonModal("open");
+      //   return false;
+      // }
+      if (lastPlayedTimestamp.getDate() === now.getDate()) {
+        if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() >= 8) {
+          gamesPlayed = 0;
+          localStorage.setItem("FF_GAMES_PLAYED", 0);
+          return true;
+        }
+        if (gamesPlayed <= 2) {
+          return true;
+        }
+      } else {
+        toggleShowSeeYouSoonModal("open");
+        return false;
+      }
+    }
+    // console.log(lastPlayedTimestamp, "timestamp")
+
+    // if (gamesPlayed >= 3 && hours === 23 && minutes >= 59 ) {
+    //   nextDay8am.setDate(nextDay8am.getDate() + 1);
+    //   nextDay8am.setHours(8, 0, 0, 0);
+    //   console.log(false)
+    //   return false
+    // } if (gamesPlayed >= 3 && hours < 23 ) {
+    //   nextDay8am.setDate(nextDay8am.getDate());
+    //   nextDay8am.setHours(8, 0, 0, 0);
+    //   console.log(false)
+    //   return false
+    // }
+    // else{
+    //   console.log(true)
+    //   console.log(gamesPlayed)
+    //   return true;
+    // }
+
+    // if ( gamesPlayed >= 3 && now.getTime() > nextDay8am.getTime()) {
+    //   localStorage.setItem("FF_GAMES_PLAYED", 0);
+    //   gamesPlayed = 0;
+    // if(gamesPlayed <= 3 && now.getTime() <= nextDay8am.getTime()){
+    //   return false
+    // }
+    // else {
+    //   return true
+    // }
+
+    // }
+    // if ( gamesPlayed >= 3 && now.getTime() > nextDay8am.getTime()) {
+    //   localStorage.setItem("FF_GAMES_PLAYED", 0);
+    //   gamesPlayed = 0;
+    // if(gamesPlayed <= 3 && now.getTime() <= nextDay8am.getTime()){
+    //   return false
+    // }
+    // else {
+    //   return true
+    // }
+
+    // }
 
     const lastPlayedDateObj = new Date(lastPlayedDate);
+    // console.log(lastPlayedDateObj, "timestamp")
+
     let diffBwLastPlayed;
     if (!isNaN(lastPlayedDateObj)) {
       diffBwLastPlayed =
@@ -416,7 +583,10 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
 
   useEffect(() => {
     const ev = document.addEventListener("click", function (e) {
-      if (e.target.parentElement !== document.querySelector(".game-text-box.category-box")) {
+      if (
+        e.target.parentElement !==
+        document.querySelector(".game-text-box.category-box")
+      ) {
         $(".game-text-box.category-box .options").slideUp();
       }
     });
@@ -444,10 +614,18 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   } else {
     return (
       <div>
-        <div style={{ display: showVideo && window.innerWidth > 600 ? "block" : "none" }}>
+        <div
+          style={{
+            display: showVideo && window.innerWidth > 600 ? "block" : "none",
+          }}
+        >
           <Video />
         </div>
-        <div style={{ display: showVideo && window.innerWidth > 600 ? "none" : "block" }}>
+        <div
+          style={{
+            display: showVideo && window.innerWidth > 600 ? "none" : "block",
+          }}
+        >
           <Section id="game">
             {/* <RevealCategoryModal
               {...revealModalUtils}
@@ -467,7 +645,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
             />
 
             <div className="d-flex align-items-center flex-column mt-md-4 mt-2 text-center">
-              {/* {fracturedPhrase && selectedCategory && (
+              {fracturedPhrase && selectedCategory && (
                 <GameTextBox className="category-box labeller lg">
                   <div className="left">CATEGORY :</div>{" "}
                   <div
@@ -485,7 +663,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
                     {isCategoryRevealed ? selectedCategory.toUpperCase() : "CLICK TO REVEAL "}
                   </div>
                 </GameTextBox>
-              )} */}
+              )}
               {fracturedPhrase && clue && (
                 <GameTextBox className="clue-box text-center">
                   {clue.toUpperCase()}
@@ -572,7 +750,9 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
                               "board-key",
                               guessedLetters.includes(el.toUpperCase())
                             )}
-                            onClick={(e) => keyClickHandler(e, el.toUpperCase())}
+                            onClick={(e) =>
+                              keyClickHandler(e, el.toUpperCase())
+                            }
                           >
                             {el.toUpperCase()}
                           </div>
