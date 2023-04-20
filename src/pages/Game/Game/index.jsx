@@ -268,7 +268,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
       setCorrectylyGuessedLetters([]);
       setGuessedLetters([]);
       setguessedPhraseArr([]);
-      setIsCategoryRevealed(false);
+      setIsCategoryRevealed(true);
       setRender(!render);
     } else {
       setGameRunning(false);
@@ -653,7 +653,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
               gameRunning={gameRunning}
               onSignInOpen={onSignInOpen}
               takeHintHandler={takeHintHandler}
-              isCategoryRevealed={isCategoryRevealed}
+              // isCategoryRevealed={isCategoryRevealed}
             />
 
             <div className="d-flex align-items-center flex-column mt-md-4 mt-2 text-center">
