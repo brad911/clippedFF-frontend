@@ -553,9 +553,10 @@ h1 {
 
   &.lg {
     padding: 0;
-    position: absolute;
-    top: 20px;
-    right: 19vw;
+    // position: absolute;
+    // top: 20px;
+    // right: 19vw;
+    position: static ;
 
     @media screen and (max-width: 992px) {
       position: static !important;

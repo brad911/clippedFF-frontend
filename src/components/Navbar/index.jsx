@@ -136,6 +136,7 @@ const Navbar = ({
                 HINTS
               </div>
               <div
+            
                 onClick={takeHintHandler}
                 style={{
                   // color: isCategoryRevealed ? "white" : "	#696969",
@@ -143,6 +144,7 @@ const Navbar = ({
                   // backgroundColor: isCategoryRevealed ? "#6DCEFF" : " #ABAAAA",
                   backgroundColor: "#6DCEFF",
                   curosor: isCategoryRevealed ? "pointer" : "unset",
+                  
                 }}
                 className="right"
               >

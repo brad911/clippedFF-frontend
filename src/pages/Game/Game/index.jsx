@@ -37,6 +37,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   const [, setCorrectylyGuessedLetters] = useState([]);
   const [lettersToGuess, setLettersToGuess] = useState([]);
   const [hintsLeft, setHintsLeft] = useState(3);
+  const [wrong, setWrong] = useState(0);
   const [guessedPhraseArr, setguessedPhraseArr] = useState([]);
   const [guessedPhraseArrWithoutGaps, setGuessedPhraseArrWithoutGaps] =
     useState([]);
@@ -56,10 +57,10 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   // CHECK IF LIMIT OF GAMES HAS REACHED
 
   const hasPlayingLimit = useCallback(() => {
-    console.log("I RUNNNNN");
+   
     let gamesPlayed = localStorage.getItem("FF_GAMES_PLAYED");
     let lastPlayedDate = localStorage.getItem("FF_LAST_PLAYED_DATE");
-    
+
     // console.log(gamesPlayed, "game played")
     const now = new Date();
     // const hours = now.getHours();
@@ -67,17 +68,22 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
     const lastPlayedTimestamp = new Date(lastPlayedDate);
     // console.log(lastPlayedTimestamp.getTime(), "lastplayedddd")
     const nextDay = lastPlayedTimestamp.getTime() + 24 * 60 * 60 * 1000;
-    console.log(
-      now.getDate() > lastPlayedTimestamp.getDate() && Math.abs(now.getTime()- lastPlayedTimestamp.getTime()) >= 75350502 ,
-      "main condition"
-    );
-    console.log(Math.abs(now.getTime()-lastPlayedTimestamp.getTime()), "math difference");
+    // console.log(
+    //   now.getDate() > lastPlayedTimestamp.getDate() &&
+    //     Math.abs(now.getTime() - lastPlayedTimestamp.getTime()) >= 75350502,
+    //   "main condition"
+    // );
+    // console.log(
+    //   Math.abs(now.getTime() - lastPlayedTimestamp.getTime()),
+    //   "math difference"
+    // );
 
     if (!isNaN(lastPlayedTimestamp)) {
-      console.log("pehla if");
+      // console.log("pehla if");
 
       if (
-        now.getDate() > lastPlayedTimestamp.getDate() && Math.abs(now.getTime()- lastPlayedTimestamp.getTime()) >= 75350502
+        now.getDate() > lastPlayedTimestamp.getDate() &&
+        Math.abs(now.getTime() - lastPlayedTimestamp.getTime()) >= 75350502
       ) {
         gamesPlayed = 0;
         localStorage.setItem("FF_GAMES_PLAYED", 0);
@@ -258,6 +264,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
       setGameRunning(true);
       setGuessesLeft(3);
       setHintsLeft(3);
+      setWrong(0);
       setCorrectylyGuessedLetters([]);
       setGuessedLetters([]);
       setguessedPhraseArr([]);
@@ -312,6 +319,11 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
     if (isEmpty(occurrenceIndexes)) {
       setGuessesLeft((prevState) => {
         return prevState - 1;
+      });
+      setWrong((prevState) => {
+        if (prevState < 3) {
+          return prevState + 1;
+        }
       });
       setHintsLeft((prevState) => {
         // if (prevState === 0) return prevState;
@@ -450,7 +462,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
         setGameRunning(true);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         if (err?.response?.data?.msg) {
           toast.error(err?.response?.data?.msg, {
             toastId: "fetching_fraze_toast",
@@ -556,7 +568,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   // GAME LOST
 
   useEffect(() => {
-    if (guessesLeft === 0) {
+    if (hintsLeft === -1) {
       setGameRunning(false);
       onGameEnd("lost", hintsLeft, guessesLeft);
     }
@@ -660,7 +672,9 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
                       }
                     }}
                   >
-                    {isCategoryRevealed ? selectedCategory.toUpperCase() : "CLICK TO REVEAL "}
+                    {isCategoryRevealed
+                      ? selectedCategory.toUpperCase()
+                      : "CLICK TO REVEAL "}
                   </div>
                 </GameTextBox>
               )}
@@ -712,20 +726,20 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
             <div className="lives-wrap">
               <div className="lives-box">
                 <div
-                  style={{ display: hintsLeft < 3 ? "block" : "none" }}
-                  className={clsx(hintsLeft < 3 && "show")}
+                  style={{ display: wrong > 2 ? "block" : "none" }}
+                  className={clsx(wrong > 2 && "show")}
                 >
                   X
                 </div>
                 <div
-                  style={{ display: hintsLeft < 2 ? "block" : "none" }}
-                  className={clsx(hintsLeft < 2 && "show")}
+                  style={{ display: wrong > 1 ? "block" : "none" }}
+                  className={clsx(wrong > 1 && "show")}
                 >
                   X
                 </div>
                 <div
-                  style={{ display: hintsLeft < 1 ? "block" : "none" }}
-                  className={clsx(hintsLeft < 1 && "show")}
+                  style={{ display: wrong > 0 ? "block" : "none" }}
+                  className={clsx(wrong > 0 && "show")}
                 >
                   X
                 </div>

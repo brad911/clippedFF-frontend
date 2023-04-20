@@ -67,7 +67,7 @@ const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
           <img className="vector" src="/assets/gifs/fail.gif" alt="fail" />
 
           <h2 className="fw-500 my-2">You couldn't make it. Better luck next time.</h2>
-          <h3>Hints used: {3 - hints}</h3>
+          <h3>Hints used: {2 - hints}</h3>
           {/* <h3>Wrong Guesses: {3 - guesses}</h3> */}
         </div>
       )}
