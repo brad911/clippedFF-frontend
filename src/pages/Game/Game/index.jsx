@@ -18,6 +18,7 @@ import Loader from "../../../components/Loader";
 import useModal from "../../../hooks/useModal";
 import RevealCategoryModal from "../../../modals/RevealCategoryModal";
 import Video from "../../../components/Animation";
+import { setGamesPlayed } from "../../../store/slices/authSlice";
 
 const rowKeys = [
   ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
@@ -26,7 +27,7 @@ const rowKeys = [
   ["z", "x", "c", "v", "b", "n", "m", "-"],
 ];
 
-function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
+function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGamesPlayed }) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [clue, setClue] = useState("");
   const [fracturedPhrase, setFracturedPhrase] = useState("");
@@ -57,29 +58,15 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
   // CHECK IF LIMIT OF GAMES HAS REACHED
 
   const hasPlayingLimit = useCallback(() => {
-   
+
     let gamesPlayed = localStorage.getItem("FF_GAMES_PLAYED");
     let lastPlayedDate = localStorage.getItem("FF_LAST_PLAYED_DATE");
-
-    // console.log(gamesPlayed, "game played")
     const now = new Date();
-    // const hours = now.getHours();
-    // const minutes = now.getMinutes();
+
     const lastPlayedTimestamp = new Date(lastPlayedDate);
-    // console.log(lastPlayedTimestamp.getTime(), "lastplayedddd")
-    const nextDay = lastPlayedTimestamp.getTime() + 24 * 60 * 60 * 1000;
-    // console.log(
-    //   now.getDate() > lastPlayedTimestamp.getDate() &&
-    //     Math.abs(now.getTime() - lastPlayedTimestamp.getTime()) >= 75350502,
-    //   "main condition"
-    // );
-    // console.log(
-    //   Math.abs(now.getTime() - lastPlayedTimestamp.getTime()),
-    //   "math difference"
-    // );
+
 
     if (!isNaN(lastPlayedTimestamp)) {
-      // console.log("pehla if");
 
       if (
         now.getDate() > lastPlayedTimestamp.getDate() &&
@@ -90,91 +77,10 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
         return true;
       }
 
-      // if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() > 7) {
-      //   if (lastPlayedTimestamp.getDate() <= now.getDate()) {
-      //     gamesPlayed = 0;
-      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
-      //     return true;
-      //   }
-      //   if (gamesPlayed <= 2) {
-      //     return true;
-      //   } else {
-      //     return false;
-      //   }
-      // }
 
-      // if (lastPlayedTimestamp.getHours() > 7 && now.getHours >= 7) {
-      //   if (lastPlayedTimestamp.getDate() < now.getDate()) {
-      //     gamesPlayed = 0;
-      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
-      //     return true;
-      //   }
-      //   if (gamesPlayed <= 2) {
-      //     return true;
-      //   }
-      // }
-      // if (lastPlayedTimestamp.getHours() > 7 && now.getHours() < 7) {
-      //   if (lastPlayedTimestamp.getDate() < now.getDate()) {
-      //     gamesPlayed = 0;
-      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
-      //     return true;
-      //   }
-      //   if (gamesPlayed <= 2) {
-      //     return true;
-      //   }
-      // }
-
-      // if (
-      //   now.getHours() >= 8 &&
-      //   now.getTime() > lastPlayedTimestamp.getTime() + nextDay
-      // ) {
-      //   console.log("doosra if");
-      //   gamesPlayed = 0;
-      //   localStorage.setItem("FF_GAMES_PLAYED", 0);
-
-      //   return true;
-      // }
-      //   if ( now.getTime() < lastPlayedTimestamp.getTime()+ nextDay ) {
-      //     if(gamesPlayed <=2){
-      //     console.log("doosra if")
-      //    return true
-      //   }
-      //   else{
-      //     console.log(false, "false araha hai yahan");
-      //     toggleShowSeeYouSoonModal("open");
-      //     return false;
-
-      //   }
-      // }
-
-      // if(now.getTime() < lastPlayedTimestamp.getTime()+ nextDay && gamesPlayed >=2){
-      //   console.log(false, "false araha hai yahan");
-      //   toggleShowSeeYouSoonModal("open");
-      //   return false;
-
-      // }
-
-      // if (lastPlayedTimestamp.getDate() <= now.getDate()) {
-      //   if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() > 7) {
-      //     gamesPlayed = 0;
-      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
-      //     return true;
-      //   }
-      //   if (
-      //     lastPlayedTimestamp.getHours() >= 7 &&
-      //     lastPlayedTimestamp.getDate() < now.getDate()
-      //   ) {
-      //     gamesPlayed = 0;
-      //     localStorage.setItem("FF_GAMES_PLAYED", 0);
-      //     return true;
-      //   }
-      // } else {
-      //   console.log(false, "false araha hai yahan");
-      //   toggleShowSeeYouSoonModal("open");
-      //   return false;
-      // }
       if (lastPlayedTimestamp.getDate() === now.getDate()) {
         if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() >= 8) {
+          setTotalGamesPlayed(0);
           gamesPlayed = 0;
           localStorage.setItem("FF_GAMES_PLAYED", 0);
           return true;
@@ -187,50 +93,8 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
         return false;
       }
     }
-    // console.log(lastPlayedTimestamp, "timestamp")
-
-    // if (gamesPlayed >= 3 && hours === 23 && minutes >= 59 ) {
-    //   nextDay8am.setDate(nextDay8am.getDate() + 1);
-    //   nextDay8am.setHours(8, 0, 0, 0);
-    //   console.log(false)
-    //   return false
-    // } if (gamesPlayed >= 3 && hours < 23 ) {
-    //   nextDay8am.setDate(nextDay8am.getDate());
-    //   nextDay8am.setHours(8, 0, 0, 0);
-    //   console.log(false)
-    //   return false
-    // }
-    // else{
-    //   console.log(true)
-    //   console.log(gamesPlayed)
-    //   return true;
-    // }
-
-    // if ( gamesPlayed >= 3 && now.getTime() > nextDay8am.getTime()) {
-    //   localStorage.setItem("FF_GAMES_PLAYED", 0);
-    //   gamesPlayed = 0;
-    // if(gamesPlayed <= 3 && now.getTime() <= nextDay8am.getTime()){
-    //   return false
-    // }
-    // else {
-    //   return true
-    // }
-
-    // }
-    // if ( gamesPlayed >= 3 && now.getTime() > nextDay8am.getTime()) {
-    //   localStorage.setItem("FF_GAMES_PLAYED", 0);
-    //   gamesPlayed = 0;
-    // if(gamesPlayed <= 3 && now.getTime() <= nextDay8am.getTime()){
-    //   return false
-    // }
-    // else {
-    //   return true
-    // }
-
-    // }
 
     const lastPlayedDateObj = new Date(lastPlayedDate);
-    // console.log(lastPlayedDateObj, "timestamp")
 
     let diffBwLastPlayed;
     if (!isNaN(lastPlayedDateObj)) {
@@ -238,16 +102,13 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
         (new Date().getTime() - lastPlayedDateObj.getTime()) / (1000 * 60 * 60);
     }
     if (diffBwLastPlayed > 24) {
+      setTotalGamesPlayed(0)
       localStorage.setItem("FF_GAMES_PLAYED", 0);
       gamesPlayed = 0;
     }
-    // if the variable is there in localStorage and a day has not been passed yet
     if (gamesPlayed >= 3 && diffBwLastPlayed < 24) {
       if (gamesPlayed >= 3) {
-        // toast.info(
-        //   "Please log in if you have an existing account, to continue playing. If you don't have an account, please sign up",
-        //   { toastId: "games_toast" }
-        // );
+
         toggleShowSeeYouSoonModal("open");
         return false; //change to false before deploy
       }
@@ -608,7 +469,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
     };
   }, []);
 
-  useEffect(() => {}, [render]);
+  useEffect(() => { }, [render]);
   useEffect(() => {
     if (counter < 3) {
       initFraze();
@@ -653,7 +514,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
               gameRunning={gameRunning}
               onSignInOpen={onSignInOpen}
               takeHintHandler={takeHintHandler}
-              // isCategoryRevealed={isCategoryRevealed}
+            // isCategoryRevealed={isCategoryRevealed}
             />
 
             <div className="d-flex align-items-center flex-column mt-md-4 mt-2 text-center">
@@ -745,6 +606,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal }) {
                 </div>
               </div>
             </div>
+            <br />
             <br />
             <div className={clsx({ disabled: !gameRunning }, "keyboard-wrap")}>
               <div className="keyboard">

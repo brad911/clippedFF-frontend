@@ -16,7 +16,6 @@ const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
       if (intent === "won") {
         sound = winSound;
       }
-
       const audio = new Audio(sound);
       audio.play();
     }
@@ -71,7 +70,7 @@ const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
           {/* <h3>Wrong Guesses: {3 - guesses}</h3> */}
         </div>
       )}
-      {intent === "won" && (
+      {/* {intent === "won" && (
         <div className="text-center mt-4 share-btns">
           <FacebookShareButton
             url={"https://fracturedfrazez.com/game/" + gameId}
@@ -92,7 +91,7 @@ const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
             Share on Twitter
           </TwitterShareButton>
         </div>
-      )}
+      )} */}
     </Modal>
   );
 };

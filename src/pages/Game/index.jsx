@@ -46,58 +46,11 @@ function GameWrapper() {
       } else {
         newGamesPlayed = 1;
       }
-      
+
 
       localStorage.setItem("FF_GAMES_PLAYED", newGamesPlayed);
       localStorage.setItem("FF_LAST_PLAYED_DATE", new Date());
     }
-    // axios
-    //   .post("/games", {
-    //     hintsUsed: 3 - hints,
-    //     wrongGuesses: 1 - guesses,
-    //     // wrongGuesses: guesses,
-    //     intent,
-    //     date: d,
-    //   })
-    //   .then((res) => {
-    //     dispatch(setGamesPlayed({ ...res?.data?.user?.lastPlayed }));
-
-    //     if (res?.data?.user?.lastPlayed?.games === 3) {
-    //       localStorage.setItem("FF_GAMES_PLAYED", 1);
-    //       localStorage.setItem("FF_LAST_PLAYED_DATE", d);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     // console.log(err);
-    //     // console.log(err?.response?.data);
-
-    //     if (!token) {
-    //       // toast.info(
-    //       //   "Please log in if you have an existing account, to add your score to the leaderboard. If you don't have an account, please sign up.",
-
-    //       //   { position: toast.POSITION.TOP_RIGHT, toastId: "game_info_toast" }
-    //       // );
-
-    //       let unsavedGames = JSON.parse(localStorage.getItem("FF_UNSAVED_GAMES"));
-
-    //       const game = {
-    //         hintsUsed: 3 - hints,
-    //         wrongGuesses: 1 - guesses,
-    //         intent,
-    //         date: new Date(),
-    //       };
-
-    //       if (!isEmpty(unsavedGames)) {
-    //         unsavedGames.unshift(game);
-    //       } else {
-    //         unsavedGames = [game];
-    //       }
-
-    //       localStorage.setItem("FF_UNSAVED_GAMES", JSON.stringify(unsavedGames));
-    //     } else {
-    //       toast.error("Uh Oh! Something went wrong while saving your data on our servers");
-    //     }
-    //   });
     finishSetMeta({
       hints,
       guesses,
@@ -107,21 +60,25 @@ function GameWrapper() {
     finishToggleShow();
   }, []);
 
-  useEffect(() => {
-    if (totalGamesPlayed >= 3) {
-      // console.log(lastPlayed?.games);
-      tommorowModalTogalShow("open");
-    }
-  }, [lastPlayed]);
+  // useEffect(() => {
+  //   console.log(totalGamesPlayed, "<=== total games played")
+  //   if (totalGamesPlayed >= 3) {
+  //     // console.log(lastPlayed?.games);
+  //     tommorowModalTogalShow("open");
+  //   }
+  //   else {
+  //     tommorowModalTogalShow("false");
+  //   }
+  // }, [totalGamesPlayed]);
 
-  
+
 
 
   return (
     <>
       <SeeYouSoonModal show={tommorowModalShow} toggleShow={tommorowModalTogalShow} />
       <FinishModal {...finishModalUtils} />
-      <Game onGameEnd={gameEndHandler} toggleShowSeeYouSoonModal={tommorowModalTogalShow} />
+      <Game onGameEnd={gameEndHandler} toggleShowSeeYouSoonModal={tommorowModalTogalShow} setTotalGamesPlayed={setGamesPlayed} />
     </>
   );
 }
