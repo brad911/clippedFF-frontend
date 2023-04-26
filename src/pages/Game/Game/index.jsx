@@ -19,7 +19,7 @@ import useModal from "../../../hooks/useModal";
 import RevealCategoryModal from "../../../modals/RevealCategoryModal";
 import Video from "../../../components/Animation";
 import { setGamesPlayed } from "../../../store/slices/authSlice";
-import soundManager from 'soundmanager2';
+import useSound from 'use-sound';
 
 const rowKeys = [
   ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
@@ -28,22 +28,7 @@ const rowKeys = [
   ["z", "x", "c", "v", "b", "n", "m", "-"],
 ];
 
-function playSound(url) {
-  soundManager.setup({
-    url: 'path/to/swf-files/',
-    onready: function () {
-      const mySound = soundManager.createSound({
-        url: url,
-        volume: 30,
-        onfinish: function () {
-          soundManager.destroySound(mySound);
-        }
-      });
 
-      mySound.play();
-    }
-  });
-}
 
 function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGamesPlayed }) {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -69,10 +54,11 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
   const [render, setRender] = useState(false);
   const [showVideo, setShowVideo] = useState(true);
   const counter = localStorage.getItem("FF_GAMES_PLAYED");
-
   const authData = useSelector((state) => state.auth);
   const { token, lastPlayed } = useSelector((state) => state.auth);
-
+  const [revealSoundEffect, { stop: stopRevealSoundEffect }] = useSound(revealSound)
+  const [failSoundEffect, { stop: stopFailSoundEffect }] = useSound(failSound)
+  const [hintSoundEffect, { stop: stopHintSoundEffect }] = useSound(hintSound)
   // CHECK IF LIMIT OF GAMES HAS REACHED
 
   const hasPlayingLimit = useCallback(() => {
@@ -211,11 +197,10 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
         // }
         return prevState - 1;
       });
-      playSound(sound)
       // const audio = new Audio(sound);
       // audio.volume = 0.1;
       // audio.play();
-
+      failSoundEffect();
       return;
     }
 
@@ -224,11 +209,8 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
     if (origin === "keyboard") {
       sound = revealSound;
     }
-    playSound(sound)
-    // const audio = new Audio(sound);
-    // audio.preload = "auto";
-    // audio.volume = 0.3;
-    // audio.play();
+    hintSoundEffect();
+    
 
     // IF ENTERED CHARACTER IS A THE PART OF FRACTURED FRAZE
 

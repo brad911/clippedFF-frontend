@@ -5,21 +5,28 @@ import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 import winSound from "../../assets/win.wav";
 import loseSound from "../../assets/lose.wav";
+import useSound from 'use-sound';
+
 
 import Modal from "../../components/Modal";
 
 const FinishModal = ({ intent, hints, guesses, gameId, ...rest }) => {
-  useEffect(() => {
-    if (intent) {
-      let sound = loseSound;
+  const [winSoundEffect, { stop: stopWinSoundEffect }] = useSound(winSound);
+  const [loseSoundEffect, { stop: stopLoseSoundEffect }] = useSound(loseSound)
 
+
+  useEffect(() => {
+    console.log("wow i ran")
+    if (intent) {
       if (intent === "won") {
-        sound = winSound;
+        winSoundEffect();
       }
-      const audio = new Audio(sound);
-      audio.play();
+      else {
+        console.log("wow")
+        loseSoundEffect()
+      }
     }
-  }, [intent]);
+  }, [intent, winSoundEffect, loseSoundEffect]);
   return (
     <Modal
       id="result-modal"
