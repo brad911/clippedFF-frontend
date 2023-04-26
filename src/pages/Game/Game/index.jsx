@@ -19,6 +19,7 @@ import useModal from "../../../hooks/useModal";
 import RevealCategoryModal from "../../../modals/RevealCategoryModal";
 import Video from "../../../components/Animation";
 import { setGamesPlayed } from "../../../store/slices/authSlice";
+import soundManager from 'soundmanager2';
 
 const rowKeys = [
   ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
@@ -26,6 +27,23 @@ const rowKeys = [
   ["a", "s", "d", "f", "g", "h", "j", "k", "l", "'"],
   ["z", "x", "c", "v", "b", "n", "m", "-"],
 ];
+
+function playSound(url) {
+  soundManager.setup({
+    url: 'path/to/swf-files/',
+    onready: function () {
+      const mySound = soundManager.createSound({
+        url: url,
+        volume: 30,
+        onfinish: function () {
+          soundManager.destroySound(mySound);
+        }
+      });
+
+      mySound.play();
+    }
+  });
+}
 
 function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGamesPlayed }) {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -193,9 +211,10 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
         // }
         return prevState - 1;
       });
-      const audio = new Audio(sound);
-      audio.volume = 0.1;
-      audio.play();
+      playSound(sound)
+      // const audio = new Audio(sound);
+      // audio.volume = 0.1;
+      // audio.play();
 
       return;
     }
@@ -205,11 +224,11 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
     if (origin === "keyboard") {
       sound = revealSound;
     }
-
-    const audio = new Audio(sound);
-    audio.preload = "auto";
-    audio.volume = 0.3;
-    audio.play();
+    playSound(sound)
+    // const audio = new Audio(sound);
+    // audio.preload = "auto";
+    // audio.volume = 0.3;
+    // audio.play();
 
     // IF ENTERED CHARACTER IS A THE PART OF FRACTURED FRAZE
 
