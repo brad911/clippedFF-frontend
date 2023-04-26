@@ -207,6 +207,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
     }
 
     const audio = new Audio(sound);
+    audio.preload = "auto";
     audio.volume = 0.3;
     audio.play();
 
@@ -298,6 +299,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
   // INITIALIZE FRAZE
 
   const initFraze = useCallback(() => {
+    let numberOfgamesPlayed = localStorage.getItem("FF_GAMES_PLAYED");
     // const randomPhraze =
     //   constants.frazez[selectedCategory.toLocaleLowerCase()][
     //     randInt(
@@ -314,7 +316,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
     setFrazeBeingSet(true);
 
     axios
-      .get("/games/fraze")
+      .get("/games/fraze", { params: { gamesPlayed: numberOfgamesPlayed, playerDate: new Date() } })
       .then((res) => {
         const { category, fraze, clue } = res.data.fraze;
         setSelectedCategory(category.toUpperCase());
