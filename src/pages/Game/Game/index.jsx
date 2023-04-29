@@ -60,7 +60,6 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
   const [failSoundEffect, { stop: stopFailSoundEffect }] = useSound(failSound)
   const [hintSoundEffect, { stop: stopHintSoundEffect }] = useSound(hintSound)
   // CHECK IF LIMIT OF GAMES HAS REACHED
-
   const hasPlayingLimit = useCallback(() => {
 
     let gamesPlayed = localStorage.getItem("FF_GAMES_PLAYED");
@@ -69,6 +68,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
 
     const lastPlayedTimestamp = new Date(lastPlayedDate);
 
+    console.log(Math.abs(now.getTime() - lastPlayedTimestamp.getTime()), "time difference");
 
     if (!isNaN(lastPlayedTimestamp)) {
 
