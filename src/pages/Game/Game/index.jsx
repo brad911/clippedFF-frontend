@@ -74,7 +74,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
 
       if (
         now.getDate() > lastPlayedTimestamp.getDate() &&
-        Math.abs(now.getTime() - lastPlayedTimestamp.getTime()) >= 75350502
+        Math.abs(now.getTime() - lastPlayedTimestamp.getTime()) >= 64768356
       ) {
         gamesPlayed = 0;
         localStorage.setItem("FF_GAMES_PLAYED", 0);
@@ -83,7 +83,7 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
 
 
       if (lastPlayedTimestamp.getDate() === now.getDate()) {
-        if (lastPlayedTimestamp.getHours() <= 7 && now.getHours() >= 8) {
+        if (lastPlayedTimestamp.getHours() <= 5 && now.getHours() >= 6) {
           setTotalGamesPlayed(0);
           gamesPlayed = 0;
           localStorage.setItem("FF_GAMES_PLAYED", 0);
