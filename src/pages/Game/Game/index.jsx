@@ -67,10 +67,17 @@ function Game({ onSignInOpen, onGameEnd, toggleShowSeeYouSoonModal, setTotalGame
     const now = new Date();
 
     const lastPlayedTimestamp = new Date(lastPlayedDate);
+    // console.log(lastPlayedTimestamp.getMonth())
+    console.log(now, "now", lastPlayedTimestamp, "last played")
 
     console.log(Math.abs(now.getTime() - lastPlayedTimestamp.getTime()), "time difference");
 
     if (!isNaN(lastPlayedTimestamp)) {
+      if(now.getMonth() > lastPlayedTimestamp.getMonth()){
+        gamesPlayed=0;
+        localStorage.setItem("FF_GAMES_PLAYED", 0);
+        return true;
+      }
 
       if (
         now.getDate() > lastPlayedTimestamp.getDate() &&
