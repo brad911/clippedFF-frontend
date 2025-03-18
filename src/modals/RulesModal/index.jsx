@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { GoogleLogin } from "@react-oauth/google";
-import FacebookLogin from "react-facebook-login";
 import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../../components/Modal";

@@ -1,8 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { useEffect } from "react";
-import { FacebookShareButton, TwitterShareButton } from "react-share";
-import { FacebookIcon, TwitterIcon } from "react-share";
+
 import winSound from "../../assets/win.wav";
 import loseSound from "../../assets/lose.wav";
 import useSound from 'use-sound';

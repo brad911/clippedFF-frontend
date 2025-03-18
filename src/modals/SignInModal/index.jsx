@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { GoogleLogin } from "@react-oauth/google";
-import FacebookLogin from "react-facebook-login";
 import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../../components/Modal";
@@ -200,17 +199,7 @@ const SignInModal = ({ ...rest }) => {
             onSuccess={googleLoginSuccess}
             onFailure={googleLoginFailure}
           />
-          {/* <div className="fb-wrapper">
-            <FacebookLogin
-              appId="1127823614500397"
-              autoLoad={false}
-              fields="name,email"
-              callback={facebookSuccess}
-              onFailure={facebookFailure}
-              textButton={isLoading ? "Loading..." : "Login with Facebook"}
-              icon="fa-facebook"
-            />
-          </div> */}
+          
         </form>
         <div style={{ paddingTop: "15px" }}>
           <button onClick={forgetpasswordUtils.toggleShow} className="btn">

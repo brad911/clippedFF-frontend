@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { GoogleLogin } from "@react-oauth/google";
-import FacebookLogin from "react-facebook-login";
 import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../../components/Modal";
 import { setUser } from "../../store/slices/authSlice";
-import clsx from "clsx";
-import useModal from "../../hooks/useModal";
-import OtpModal from "../otp";
 
 const ForgetPasswordModal = (props) => {
   const { ...rest } = props;
@@ -170,46 +165,7 @@ const ForgetPasswordModal = (props) => {
           <button className="submit btn" disabled={isLoading}>
             Submit
           </button>
-          {/* 
-          <div className="switch mb-3">
-            {isMember ? (
-              <>
-                Don't have an account?{" "}
-                <button className="btn" onClick={toggleForm}>
-                  Signup
-                </button>
-              </>
-            ) : (
-              <>
-                Already a member?{" "}
-                <button className="btn" onClick={toggleForm}>
-                  Login
-                </button>
-              </>
-            )}
-          </div> */}
         </form>
-
-        {/* <div className="or">OR</div> */}
-        {/* 
-        <form action="">
-          <GoogleLogin
-            buttonText={isLoading ? "Loading..." : "Login with google"}
-            onSuccess={googleLoginSuccess}
-            onFailure={googleLoginFailure}
-          /> */}
-        {/* <div className="fb-wrapper">
-            <FacebookLogin
-              appId="1127823614500397"
-              autoLoad={false}
-              fields="name,email"
-              callback={facebookSuccess}
-              onFailure={facebookFailure}
-              textButton={isLoading ? "Loading..." : "Login with Facebook"}
-              icon="fa-facebook"
-            />
-          </div> */}
-        {/* </form> */}
       </div>
     </Modal>
   );

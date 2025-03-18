@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { GoogleLogin } from "@react-oauth/google";
-import FacebookLogin from "react-facebook-login";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../../components/Modal";
-import { setUser } from "../../store/slices/authSlice";
-import clsx from "clsx";
 import useModal from "../../hooks/useModal";
-import ResetPassword from "../resetPassword";
-import ResetPasswordModal from "../resetPassword";
 
 const OtpModal = ({ ...rest }) => {
   const [isMember, setIsMember] = useState(false);
@@ -23,13 +18,6 @@ const OtpModal = ({ ...rest }) => {
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   //auth/forgot-password
-  const { token } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-
-  const toggleForm = (e) => {
-    e.preventDefault();
-    setIsMember((prevState) => !prevState);
-  };
 
   const inputChangeHandler = (e) => setOtp(e.target.value);
 
@@ -70,59 +58,6 @@ const OtpModal = ({ ...rest }) => {
       .finally(() => [setIsLoading(false)]);
   };
 
-  const googleLoginSuccess = (response) => {
-    // console.log(response);
-    setIsLoading(true);
-
-    // axios
-    //   .post("///auth/forgot-password", { credential: response.credential })
-    //   .then((res) => {
-    //     dispatch(setUser({ token: res.data.token, ...res.data.user }));
-    //     rest.toggleShow();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     toast.error("Uh Oh! Something went wrong");
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
-  };
-
-  const googleLoginFailure = (err) => {
-    toast.error("Uh Oh! Something went wrong");
-    // console.log(err);
-    setIsLoading(false);
-  };
-
-  //   const facebookSuccess = (response) => {
-  //     // console.log(response);
-  //     setIsLoading(true);
-
-  //     axios
-  //       .post("/auth/facebook-login", {
-  //         accessToken: response.accessToken,
-  //         userID: response.userID,
-  //       })
-  //       .then((res) => {
-  //         dispatch(setUser({ token: res.data.token, ...res.data.user }));
-  //         rest.toggleShow();
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //         toast.error("Uh Oh! Something went wrong");
-  //       })
-  //       .finally(() => {
-  //         setIsLoading(false);
-  //       });
-  //   };
-
-  //   const facebookFailure = (err) => {
-  //     console.log(err);
-  //     toast.error("Uh Oh! Something went wrong");
-  //     setIsLoading(false);
-  //   };
-  // console.log(localStorage.getItem("TempToken"))
   return (
     <Modal
       id="otp-modal"
@@ -132,18 +67,6 @@ const OtpModal = ({ ...rest }) => {
     >
       <div className="text-center">
         <form onSubmit={formSubmitHandler}>
-          {/* {!isMember && (
-            <div className="form-control">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={formState.name}
-                onChange={inputChangeHandler}
-              />
-            </div>
-          )} */}
           <div className="form-control">
             <label
               htmlFor="otp"
@@ -153,16 +76,7 @@ const OtpModal = ({ ...rest }) => {
             </label>
             <input type="text" name="otp" id="otp" value={otp} onChange={inputChangeHandler} />
           </div>
-          {/* <div className="form-control">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formState.password}
-              onChange={inputChangeHandler}
-            />
-          </div> */}
+         
 
           <button className="submit btn" disabled={isLoading}>
             Submit
